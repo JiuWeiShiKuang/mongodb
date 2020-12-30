@@ -3,6 +3,7 @@
 #  data:
 #    mongodb:
 #      uri: mongodb://admin:08060067@121.4.87.126:27017/user?maxPoolSize=256
+#mongodb://aroot:999999@192.168.11.121:27017/udb
 spring:
   data:
     mongodb:

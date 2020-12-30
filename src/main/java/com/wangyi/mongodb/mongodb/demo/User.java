@@ -1,5 +1,9 @@
 package com.wangyi.mongodb.mongodb.demo;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -8,6 +12,8 @@ import java.io.Serializable;
  * @Description:
  * @author: wy
  */
+@Data
+@Document(collection = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = -3258839839160856613L;
     @Field("id")
@@ -41,12 +47,4 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }
