@@ -1,0 +1,5 @@
+1.新建springboot项目
+2.application.yml配置mongodb数据库连接
+3.pom文件引入spring-boot-starter-data-mongodb依赖
+4.UserDaoTest测试类里测试mongodb增删改查和分页查询
+5.或者启动springboot从浏览器访问localhost:8080测试查看查询结果
