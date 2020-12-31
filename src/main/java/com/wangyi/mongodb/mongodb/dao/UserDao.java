@@ -2,6 +2,7 @@ package com.wangyi.mongodb.mongodb.dao;
 
 //import com.springboot.demo.mongo.page.PageModel;
 //import com.springboot.demo.mongo.page.SpringPageable;
+import com.wangyi.mongodb.mongodb.demo.TestId;
 import com.wangyi.mongodb.mongodb.demo.User;
 import com.wangyi.mongodb.mongodb.page.PageModel;
 import com.wangyi.mongodb.mongodb.page.SpringPageable;
@@ -40,6 +41,15 @@ public class UserDao {
      */
     public void saveUserTable(User user) {
         mongoTemplate.save(user,"user_info");
+    }
+
+    /**
+     * 保存user指定操作表  自增id
+     *
+     * @param user user
+     */
+    public void saveUserTableTestId(TestId user) {
+        mongoTemplate.save(user,"test_id");
     }
 
     /**
@@ -85,13 +95,13 @@ public class UserDao {
         SpringPageable pageable = new SpringPageable();
         PageModel pm = new PageModel();
         Query query = new Query();
-        Sort sort = Sort.by(Sort.Direction.DESC,sortField);
+        Sort sort = Sort.by(Sort.Direction.ASC,sortField);
         pm.setPagenumber(pageNum);
         pm.setPagesize(pageSize);
         pm.setSort(sort);
         pageable.setPage(pm);
         Long count = mongoTemplate.count(query, User.class);
-        List<User> list = mongoTemplate.find(query.with(pageable), User.class);
+        List<User> list = mongoTemplate.find(query.with(pageable), User.class,"user_info");
         return new PageImpl<>(list, pageable, count);
     }
 }

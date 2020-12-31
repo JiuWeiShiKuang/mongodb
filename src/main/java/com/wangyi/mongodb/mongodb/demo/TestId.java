@@ -1,7 +1,5 @@
 package com.wangyi.mongodb.mongodb.demo;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,11 +12,13 @@ import java.io.Serializable;
  * @author: wy
  */
 @Data
-@Document(collection = "user")
-public class User implements Serializable {
+@Document(collection = "test_id")
+public class TestId implements Serializable {
     private static final long serialVersionUID = -3258839839160856613L;
-    @Field("id")
-    private Long id;
+    @AutoIncKey
+    @Id
+//    @Field("id")
+    private String id;
     @Field("user_name")
     private String userName;
     @Field("password")

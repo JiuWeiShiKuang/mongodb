@@ -1,6 +1,7 @@
 package com.wangyi.mongodb;
 
 import com.wangyi.mongodb.mongodb.dao.UserDao;
+import com.wangyi.mongodb.mongodb.demo.TestId;
 import com.wangyi.mongodb.mongodb.demo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +27,7 @@ public class UserDaoTest {
         User user = new User();
         for (int i = 0; i < 100; i++) {
             user.setId((long) (100 + i));
-            user.setUserName("hollysys_" + i);
+            user.setUserName("wy" + i);
             user.setPassword("123456a?");
             userDao.saveUser(user);
             System.out.println("insert:" + i);
@@ -40,6 +41,17 @@ public class UserDaoTest {
         user.setUserName("王五");
         userDao.saveUserTable(user);
     }
+    /**
+     * 测试自定义注解 自增id
+     */
+    @Test
+    public void saveUserTableTestId(){
+        TestId user = new TestId();
+//        user.setId((long)100);
+        user.setPassword("1233231");
+        user.setUserName("王五");
+        userDao.saveUserTableTestId(user);
+    }
 
     @Test
     public void findUserByUserName() {
@@ -50,7 +62,7 @@ public class UserDaoTest {
     @Test
     public void updateUser() {
         User user = new User();
-        user.setId(new Long(100));
+//        user.setId(new Long(100));
         user.setUserName("hollysys_0");
         user.setPassword("123456?");
         userDao.updateUser(user);
@@ -64,7 +76,7 @@ public class UserDaoTest {
 
     @Test
     public void findUserPagination() {
-        Page<User> userPages = userDao.findUserPagination(1, 5,"id");
+        Page<User> userPages = userDao.findUserPagination(1, 10,"id");
         userPages.forEach(u -> {
             System.out.println(u);
         });
