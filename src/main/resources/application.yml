@@ -2,12 +2,11 @@
 #spring:
 #  data:
 #    mongodb:
-#      uri: mongodb://admin:08060067@121.4.87.126:27017/user?maxPoolSize=256
+#      uri: mongodb://121.4.87.126:27017/user?maxPoolSize=256
+#mongodb设置管理用户需要校验用户密码时加下面配置
 spring:
   data:
     mongodb:
-      host: 121.4.87.126
-      port: 27017
-      username: admin
-      password: 08060067
-      database: admin
+      database: user #库名
+      authentication-database: admin #用户账号
+      uri: mongodb://admin:123456@121.4.87.126:27017 #mongodb://用户账号:用户密码@IP:端口号
